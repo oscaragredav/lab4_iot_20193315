@@ -1,10 +1,15 @@
 plugins {
     alias(libs.plugins.androidApplication)
+    id 'androidx.navigation.safeargs'
 }
 
 android {
     namespace 'com.example.l4'
     compileSdk 34
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.example.l4"
@@ -37,4 +42,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
 }
