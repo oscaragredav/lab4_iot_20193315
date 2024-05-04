@@ -2,20 +2,13 @@ package com.example.l4;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.l4.databinding.ActivityAppBinding;
-import com.example.l4.entity.Ciudad;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.l4.service.CiudadService;
 
 public class appActivity extends AppCompatActivity {
 
@@ -36,7 +29,6 @@ public class appActivity extends AppCompatActivity {
             } else if (menuItem.getItemId() == R.id.clima) {
                 replaceFragment(new ClimaFragment());
             }
-
             return true;
         });
     }

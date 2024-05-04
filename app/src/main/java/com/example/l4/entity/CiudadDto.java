@@ -3,7 +3,7 @@ package com.example.l4.entity;
 import java.util.List;
 
 public class CiudadDto {
-    public List<Ciudad> lista;
+    private List<Ciudad> lista;
 
     public CiudadDto(List<Ciudad> lista) {
         this.lista = lista;

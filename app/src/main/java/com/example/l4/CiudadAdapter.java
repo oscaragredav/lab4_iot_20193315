@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,6 @@ public class CiudadAdapter extends RecyclerView.Adapter<CiudadAdapter.CiudadView
     Context context;
     List<Ciudad> list;
 
-    public CiudadAdapter(Context context, List<Ciudad> list) {
-        this.context = context;
-        this.list = list;
-    }
 
     public Context getContext() {
         return context;
@@ -55,9 +50,9 @@ public class CiudadAdapter extends RecyclerView.Adapter<CiudadAdapter.CiudadView
         TextView name = holder.itemView.findViewById(R.id.name);
         name.setText(ciudad1.getName());
         TextView lat = holder.itemView.findViewById(R.id.lat);
-        lat.setText(ciudad1.getLat());
-        TextView lon = holder.itemView.findViewById(R.id.lon);
-        lon.setText(ciudad1.getLon());
+        lat.setText(""+ ciudad1.getLat());
+        TextView lon = holder.itemView.findViewById(R.id.lat);
+        lon.setText(""+ ciudad1.getLon());
     }
 
     @Override

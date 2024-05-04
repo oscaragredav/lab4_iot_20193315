@@ -1,15 +1,11 @@
 package com.example.l4.entity;
 
-public class Ciudad {
-    private String name;
-    private String lat;
-    private String lon;
+import java.io.Serializable;
 
-    public Ciudad(String name, String lat, String lon) {
-        this.name = name;
-        this.lat = lat;
-        this.lon = lon;
-    }
+public class Ciudad implements Serializable {
+    private String name;
+    private double lat;
+    private double lon;
 
     public String getName() {
         return name;
@@ -19,19 +15,19 @@ public class Ciudad {
         this.name = name;
     }
 
-    public String getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public String getLon() {
+    public double getLon() {
         return lon;
     }
 
-    public void setLon(String lon) {
+    public void setLon(double lon) {
         this.lon = lon;
     }
 }

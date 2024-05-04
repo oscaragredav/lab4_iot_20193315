@@ -3,17 +3,13 @@ package com.example.l4;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.l4.R;
 import com.example.l4.databinding.ActivityPruebaBinding;
 import com.example.l4.entity.Ciudad;
-import com.example.l4.entity.CiudadDto;
+import com.example.l4.service.CiudadService;
 
 import java.util.List;
 
@@ -27,7 +23,7 @@ public class PruebaActivity extends AppCompatActivity {
 
     CiudadService ciudadService;
     ActivityPruebaBinding binding;
-    private static String TAG = "msg-mainAct";
+    private static String TAG = "eeerror";
 
 
     @Override
@@ -35,54 +31,46 @@ public class PruebaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba);
 
-        createRetrofitService();
-
-    }
-
-    //llamado al retro fit
-    public void createRetrofitService() {
-         ciudadService= new Retrofit.Builder()
-                .baseUrl("http://api.openweathermap.org/geo/1.0/direct?")
+        ciudadService= new Retrofit.Builder()
+                .baseUrl("http://api.openweathermap.org")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(CiudadService.class);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        cargarListaWebService();
-    }
+        binding.button.setOnClickListener(v -> {
+            String city = binding.editText.getText().toString();
 
-    public void cargarListaWebService() {
-        ciudadService.obtenerCiudad().enqueue(new Callback<CiudadDto>() {
-            @Override
-            public void onResponse(Call<CiudadDto> call, Response<CiudadDto> response) {
-                if (response.isSuccessful()) {
-                    CiudadDto body = response.body();
-                    List<Ciudad> lista = body.getLista();
-                    //tengo la lista -> ready!
-                    CiudadAdapter ciudadAdapter = new CiudadAdapter(getApplicationContext(),lista);
-                    ciudadAdapter.setContext(getApplicationContext());
-                    ciudadAdapter.setList(lista);
+            ciudadService.obtenerCiudad2(city,1,"8dd6fc3be19ceb8601c2c3e811c16cf1").enqueue(new Callback<List<Ciudad>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<Ciudad>> call, Response<List<Ciudad>> response) {
+                    if (response.isSuccessful()) {
+                        List<Ciudad> ciudads = response.body();
+                        //tengo la lista -> ready!
+                        CiudadAdapter ciudadAdapter = new CiudadAdapter();
+                        ciudadAdapter.setContext(PruebaActivity.this);
+                        ciudadAdapter.setList(ciudads);
 
-                    binding.recyclerViewCiudad.setAdapter(ciudadAdapter);
-                    binding.recyclerViewCiudad.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        binding.recyclerViewCiudad.setAdapter(ciudadAdapter);
+                        binding.recyclerViewCiudad.setLayoutManager(new LinearLayoutManager(PruebaActivity.this));
 
 
-                } else {
-                    Log.d(TAG, "response unsuccessful");
+                    } else {
+                        Log.e(TAG, "response unsuccessful");
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<CiudadDto> call, Throwable t) {
-                Log.d(TAG, "algo pasó!!!");
-                Log.d(TAG, t.getMessage());
-                t.printStackTrace();
+                @Override
+                public void onFailure(Call<List<Ciudad>> call, Throwable t) {
+                    Log.e(TAG, "algo pasó!!!");
+                    Log.e(TAG, t.getMessage());
+                    t.printStackTrace();
 
-            }
+                }
+            });
         });
+
+
+
     }
 
 
