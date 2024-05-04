@@ -35,6 +35,7 @@ public class PruebaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba);
 
+        createRetrofitService();
 
     }
 
@@ -45,6 +46,12 @@ public class PruebaActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(CiudadService.class);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        cargarListaWebService();
     }
 
     public void cargarListaWebService() {
