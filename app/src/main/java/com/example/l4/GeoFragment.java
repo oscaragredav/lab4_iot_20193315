@@ -68,7 +68,6 @@ public class GeoFragment extends Fragment {
                     t.printStackTrace();
                 }
             });
-            binding.editText.setText("hola");
         });
 
 

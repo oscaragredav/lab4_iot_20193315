@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="celeste">#80D8FF</color>
     <color name="azul">#303F9F</color>
+    <color name="gris">#4D578E</color>
+    <color name="transparente">#6B99A3DF</color>
 </resources>

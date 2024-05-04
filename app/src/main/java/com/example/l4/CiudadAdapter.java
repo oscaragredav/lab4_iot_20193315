@@ -50,9 +50,9 @@ public class CiudadAdapter extends RecyclerView.Adapter<CiudadAdapter.CiudadView
         TextView name = holder.itemView.findViewById(R.id.name);
         name.setText(ciudad1.getName());
         TextView lat = holder.itemView.findViewById(R.id.lat);
-        lat.setText(""+ ciudad1.getLat());
-        TextView lon = holder.itemView.findViewById(R.id.lat);
-        lon.setText(""+ ciudad1.getLon());
+        lat.setText("Lat: "+ ciudad1.getLat());
+        TextView lon = holder.itemView.findViewById(R.id.lon);
+        lon.setText("Lon: "+ ciudad1.getLon());
     }
 
     @Override

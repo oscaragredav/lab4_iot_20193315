@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="geo"
+    <item android:title="Geolocalización"
         android:id="@+id/geo"
         android:icon="@drawable/map"
         />
-    <item android:title="clima"
+    <item android:title="Clima"
         android:icon="@drawable/cloud"
         android:id="@+id/clima"/>
 </menu>

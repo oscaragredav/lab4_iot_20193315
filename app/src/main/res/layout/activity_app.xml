@@ -42,6 +42,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="1.0"
       app:menu="@menu/buttom_nav_bar"
+      android:background="@color/gris"
       app:layout_constraintStart_toStartOf="parent"
       >
 
