@@ -12,10 +12,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.l4.databinding.ActivityAppBinding;
+import com.example.l4.entity.Ciudad;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class appActivity extends AppCompatActivity {
 
     ActivityAppBinding binding;
+    CiudadService ciudadService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/azul"
-        android:onClick="appActivity"
+        android:onClick="pruebaActivity"
         android:text="INGRESAR"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
