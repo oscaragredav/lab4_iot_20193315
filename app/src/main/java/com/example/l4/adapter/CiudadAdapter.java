@@ -1,4 +1,4 @@
-package com.example.l4;
+package com.example.l4.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.l4.R;
 import com.example.l4.entity.Ciudad;
 
 import java.util.List;

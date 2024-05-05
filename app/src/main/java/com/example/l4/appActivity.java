@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.l4.databinding.ActivityAppBinding;
+import com.example.l4.fragment.ClimaFragment;
+import com.example.l4.fragment.GeoFragment;
 import com.example.l4.service.CiudadService;
 
 public class appActivity extends AppCompatActivity {

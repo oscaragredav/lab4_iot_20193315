@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/climaFragment"
-        android:name="com.example.l4.ClimaFragment"
+        android:name="com.example.l4.fragment.ClimaFragment"
         android:label="fragment_clima"
         tools:layout="@layout/fragment_clima" />
     <fragment
         android:id="@+id/geoFragment"
-        android:name="com.example.l4.GeoFragment"
+        android:name="com.example.l4.fragment.GeoFragment"
         android:label="fragment_geo"
         tools:layout="@layout/fragment_geo" />
     <fragment android:id="@+id/placeholder" />

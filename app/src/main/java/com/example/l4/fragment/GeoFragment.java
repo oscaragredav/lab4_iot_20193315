@@ -1,4 +1,4 @@
-package com.example.l4;
+package com.example.l4.fragment;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.l4.databinding.FragmentGeoBinding;
 import com.example.l4.entity.Ciudad;
-import com.example.l4.service.CiudadService;
+import com.example.l4.adapter.CiudadAdapter;
 import com.example.l4.service.GeoService;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class GeoFragment extends Fragment {
                 .build()
                 .create(GeoService.class);
 
-        binding.button.setOnClickListener(v -> {
+        binding.buscarGeo.setOnClickListener(v -> {
 
             String city = binding.editText.getText().toString();
             geoService.obtenerCiudad3(city,1,"8dd6fc3be19ceb8601c2c3e811c16cf1").enqueue(new Callback<List<Ciudad>>() {
