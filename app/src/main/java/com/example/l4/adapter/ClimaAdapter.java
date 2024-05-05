@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +35,7 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaViewHol
     @NonNull
     @Override
     public ClimaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item2_recycler,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_clima_recycler,parent,false);
         return new ClimaViewHolder(view);
     }
 
@@ -44,18 +43,23 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaViewHol
     public void onBindViewHolder(@NonNull ClimaViewHolder holder, int position) {
         Clima clima1 = clima;
         holder.clima = clima1;
-        Toast.makeText(getContext(), clima1.getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), clima1.getName(), Toast.LENGTH_SHORT).show();
         TextView name = holder.itemView.findViewById(R.id.name);
         name.setText(clima1.getName());
+
         TextView min = holder.itemView.findViewById(R.id.min);
         min.setText(clima1.getMain().getTemp_min());
-        TextView max = holder.itemView.findViewById(R.id.min);
-        max.setText(clima1.getMain().getTemp_max());
-        TextView wind = holder.itemView.findViewById(R.id.viento);
-//        wind.setText(obtenerDireccionViento(Double.parseDouble(clima1.getWind().getDirection())));
-        wind.setText(clima1.getWind().getDirection());
 
-        Toast.makeText(getContext(), clima1.getName(), Toast.LENGTH_LONG).show();
+        TextView max = holder.itemView.findViewById(R.id.max);
+        max.setText(clima1.getMain().getTemp_max());
+
+        TextView temp = holder.itemView.findViewById(R.id.temp);
+        temp.setText(clima1.getMain().getTemp());
+
+
+        TextView wind = holder.itemView.findViewById(R.id.viento);
+        wind.setText(obtenerDireccionViento(Double.parseDouble(clima1.getWind().getDeg())));
+//        wind.setText(clima1.getWind().getDeg());
     }
 
     //método obtenido de ChatGpt mediante el sgte prom:
@@ -81,10 +85,15 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaViewHol
         }
     }
 
-
+//modificado con ayuda de ChatGpt con la prompt
+    //cómo puedo modificar el método getItemCount() si es que ya no recibiré una lista, sino solo la instancia de un objeto
     @Override
     public int getItemCount() {
-        return 0;
+        if (clima != null) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public class ClimaViewHolder extends RecyclerView.ViewHolder{

@@ -63,14 +63,14 @@ public class Clima {
     }
 
     public class Wind {
-         String direction;
+         String deg;
 
-        public String getDirection() {
-            return direction;
+        public String getDeg() {
+            return deg;
         }
 
-        public void setDirection(String direction) {
-            this.direction = direction;
+        public void setDeg(String deg) {
+            this.deg = deg;
         }
     }
 

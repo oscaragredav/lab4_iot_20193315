@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClimaFragment extends Fragment {
 
-    FragmentClimaBinding binding;
+    FragmentClimaBinding bin;
     GeoService geoService;
     private static String TAG = "tag-error";
 
@@ -34,7 +34,7 @@ public class ClimaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentClimaBinding.inflate(inflater,container,false);
+        bin = FragmentClimaBinding.inflate(inflater,container,false);
 
 
         geoService = new Retrofit.Builder()
@@ -43,13 +43,13 @@ public class ClimaFragment extends Fragment {
                 .build()
                 .create(GeoService.class);
 
-        binding.buscarClima.setOnClickListener(v -> {
-            double lat = Double.parseDouble(binding.editText1.getText().toString());
-            double lon = Double.parseDouble(binding.editText2.getText().toString());
+        bin.buscarClima.setOnClickListener(v -> {
+            double lat = Double.parseDouble(bin.editText1.getText().toString());
+            double lon = Double.parseDouble(bin.editText2.getText().toString());
             geoService.obtenerClima(lat,lon,"8dd6fc3be19ceb8601c2c3e811c16cf1").enqueue(new Callback<Clima>() {
                 @Override
                 public void onResponse(Call<Clima> call, Response<Clima> response) {
-                    binding.textView3.setText(binding.editText1.getText().toString());
+
                     if (response.isSuccessful()){
 //                        Toast.makeText(getContext(), "isSuccessful onResponse", Toast.LENGTH_SHORT).show();
                         Clima clima = response.body();
@@ -57,8 +57,11 @@ public class ClimaFragment extends Fragment {
                         climaAdapter.setContext(getContext());
                         climaAdapter.setClima(clima);
 
-                        binding.recyclerViewClima.setAdapter(climaAdapter);
-                        binding.recyclerViewClima.setLayoutManager(new LinearLayoutManager(getContext()));
+                        bin.recyclerViewClima.setAdapter(climaAdapter);
+                        bin.recyclerViewClima.setLayoutManager(new LinearLayoutManager(getContext()));
+
+//                        bin.textView3.setText(climaAdapter.getClima().getMain().getTemp_max());
+
                     }else{
                         Log.e(TAG, "error onResponse");
                         Toast.makeText(getContext(), "error onResponse", Toast.LENGTH_LONG).show();
@@ -74,6 +77,6 @@ public class ClimaFragment extends Fragment {
             });
         });
 
-        return binding.getRoot();
+        return bin.getRoot();
     }
 }
